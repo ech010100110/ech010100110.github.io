@@ -1,0 +1,83 @@
+/* MOST OF THIS IS JUST GETING EVERYTHING INTO THE RIGHT PLACE.
+SOME OF IT IS FORE THEMES
+THE REST IS STYLING (LIKE THE BUTTONS)
+*/
+
+/* default to light mode*/
+:root {
+  color-scheme: only light;
+  font-family: serif;
+}
+
+/* DO NOT USE
+ONLY EXISTS FOR DARK MODE*/
+.dark-donotuse {
+  color-scheme: only dark !important;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background-color: light-dark(#fff, #111);
+}
+
+/* THE LITTLE TEXT BY IMAGES */
+.attrib {
+  padding-top: 0rem;
+  margin-top: 0rem;
+  font-size: 0.6rem;
+}
+
+.productimage {
+  width: 20%;
+}
+
+input,
+button {
+  padding: 0.5rem;
+  margin: 0.1rem;
+  border-style: none;
+  border-radius: 3px;
+  background-color: light-dark(#bbb, #444);
+  color: light-dark(#222, #ccc);
+  font-family: sans-serif;
+}
+
+/* THE POPUPS */
+dialog {
+  border-style: none;
+  border-radius: 3px;
+  background-color: light-dark(#ccc, #333);
+}
+
+h1,
+h2,
+p,
+b,
+a {
+  color: light-dark(#222, #ccc);
+}
+
+/* THE SIDEBAR */
+.sidenav {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  align-items: center;
+  background-color: light-dark(#ccc, #333);
+}
+
+.sidenav button {
+  width: 90%;
+  margin: 1rem;
+  padding: 1rem;
+  display: block;
+  border-style: none;
+  border-radius: 3px;
+  background-color: light-dark(#bbb, #444);
+}

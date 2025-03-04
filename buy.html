@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Store</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <!--REDIRECT IF JS IS NOT ENABLED-->
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/err/nojs.html" />
+    </noscript>
+  </head>
+  <body>
+    <!--SETTINGS DIALOG-->
+    <dialog id="settings">
+      <button onclick="clearCookies('spent')">Clear cookies</button>
+      <button onclick="darkMode()">Toggle theme</button>
+      <button onclick="showDialog('info')">Info</button>
+      <button onclick="closeDialog('settings')">Close</button>
+    </dialog>
+    <dialog id="info">
+      <p>MIT Licence</p>
+      <p>Copyright (c) 2025 ech010100110</p>
+      <p><a href="https://raw.githubusercontent.com/ech010100110/ech010100110.github.io/refs/heads/main/LICENSE" target="_blank">Licence information</a></p>
+      <br/>
+      <p>Source code: <a href="https://github.com/ech010100110/ech010100110.github.io" target="_blank">https://github.com/ech010100110/ech010100110.github.io</a></p>
+      <button onclick="closeDialog('info')">Close</button>
+    </dialog>
+    <!--SIDEBAR-->
+    <div class="sidenav">
+      <button id="cart">My cart: <b>$0</b>
+      </button>
+      <button class="settings" onclick="showDialog('settings')">Settings</button>
+    </div>
+    <header>
+      <h1>
+        <a href="/">Store</a>
+      </h1>
+    </header>
+    <!--LINKS WILL BE ADDED BELOW BY JAVASCRIPT-->
+    <div id="productdata">
+      <p>It appears an error has occurred. Please reload with the button below, or try again later.</p>
+      <button onclick="window.location.reload()">Reload</button>
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        showPermission();
+        reloadData();
+        populateCartButton();
+        getProductData();
+        startupTheme();
+        startupStock();
+      });
+    </script>
+  </body>
+</html>

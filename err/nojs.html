@@ -1,0 +1,28 @@
+<!--Another very basic page, can't use javascript as if you see this page it is disabled-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Store</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+  </head>
+  <body>
+    <header>
+      <h1>Store</h1>
+    </header>
+    <h2>
+      It appears you have disabled Javascript. <wbr/>
+      Please enable it to use this website. <wbr/>
+      Once you have enabled Javascript, this page should automatically redirect back to the main site. <wbr/>
+      If it does not, please click <a href="/">here</a>
+    </h2>
+    <script>
+      // CANT TEST ON SCHOOL COMPUTER, REDIRECT WHEN JS IS ENABLED
+      window.onload = function() {
+        window.location.href = "/";
+      }
+    </script>
+  </body>
+</html>
