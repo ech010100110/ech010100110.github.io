@@ -43,7 +43,7 @@
                 document.querySelector('.main_text').style.color = (Math.random() > 0.5) ? "purple" : "green"
                 timerID = setTimeout(() => {
                     fail();
-                }, 500)
+                }, 1000)
             }
             function fail() {
                 clearTimeout(timerID);
@@ -84,7 +84,7 @@
                 <li>if you see <b class="p">GREEN</b>, you will hit Q, because the word is <i>"GREEN"</i></li>
                 <li>if you see <b class="g">PURPLE</b>, you will hit P, because the word is <i>"PURPLE"</i></li>
             </ul>
-            You will only have five hundred milliseconds to hit the correct key.<br/>
+            You will only have one second to hit the correct key.<br/>
             To start the game, press any key to close this dialog, and then any key to start. <br/>
             Good luck!<br/>
         </dialog>
