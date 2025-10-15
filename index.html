@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>GreenPurple</title>
+        <style>
+            :root {
+                background-color: black;
+                font-family: sans-serif;
+            }
+            .main_text {
+                color: ghostwhite;
+                text-align: center;
+                font-size: 10rem;
+            }
+            .green {
+                color: green;
+                text-align: left;
+                font-size: large;
+            }
+            .purple {
+                color: purple;
+                text-align: right;
+                font-size: large;
+            }
+            .g {
+                color: green;
+            }
+            .b {
+                color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            let points = 0;
+            let timerID = 0;
+            function closehelp() {
+                document.querySelector('dialog').close();
+            }
+            function succeed() {
+                clearTimeout(timerID);
+                document.querySelector('.main_text').innerText = (Math.random() > 0.5) ? "PURPLE" : "GREEN"
+                document.querySelector('.main_text').style.color = (Math.random() > 0.5) ? "purple" : "green"
+                timerID = setTimeout(() => {
+                    fail();
+                }, 500)
+            }
+            function fail() {
+                clearTimeout(timerID);
+                document.querySelector('.main_text').innerText = `YOU FAILED with ${points} points.`
+                document.querySelector('.main_text').style.color = "red"
+            }
+            document.onkeypress = function (e) {
+                e = e || window.event;
+                let color = document.querySelector('.main_text').innerText;
+                const dialog = document.querySelector('dialog');
+                // use e.keyCode
+                // 113=Q, green
+                // 112=P, purple
+                if (dialog.open == true) {
+                    dialog.close();
+                } else if (color == "READY") {
+                    succeed()
+                } else if ((e.keyCode == 113 && color == "GREEN") || (e.keyCode == 112 && color == "PURPLE")) {
+                    points++;
+                    succeed();
+                } else {
+                    fail();
+                }
+            };
+        </script>
+        <h1 class="main_text">READY</h1>
+        <p class="green">GREEN</p>
+        <p class="purple">PURPLE</p>
+        <dialog open>
+            <h2>HOW TO PLAY: </h2>
+            When you start the game, you will see a word. That word will be either GREEN or PURPLE, and will be coloured either green or purple. <wb/>The colours are only there to mislead you.
+            If the word is GREEN, not the colour green, then you will press the Q key on your keyboard. <br/>
+            If the word is PURPLE, not the colour purple, then you will press the P key on your keyboard. <br/><br/>
+            For example,
+            <ul>
+                <li>if you see <b class="g">GREEN</b>, you will hit Q, because the word is <i>"GREEN"</i></li>
+                <li>if you see <b class="p">PURPLE</b>, you will hit P, because the word is <i>"PURPLE"</i></li>
+                <li>if you see <b class="p">GREEN</b>, you will hit Q, because the word is <i>"GREEN"</i></li>
+                <li>if you see <b class="g">PURPLE</b>, you will hit P, because the word is <i>"PURPLE"</i></li>
+            </ul>
+            You will only have five hundred milliseconds to hit the correct key.<br/>
+            To start the game, press any key to close this dialog, and then any key to start. <br/>
+            Good luck!<br/>
+        </dialog>
+    </body>
+</html>
