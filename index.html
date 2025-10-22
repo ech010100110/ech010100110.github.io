@@ -1,92 +1,132 @@
-<!DOCTYPE HTML>
+<DOCTYPE HTML>
 <html>
-    <head>
-        <title>GreenPurple</title>
-        <style>
-            :root {
-                background-color: black;
-                font-family: sans-serif;
-            }
-            .main_text {
-                color: ghostwhite;
-                text-align: center;
-                font-size: 10rem;
-            }
-            .green {
-                color: green;
-                text-align: left;
-                font-size: large;
-            }
-            .purple {
-                color: purple;
-                text-align: right;
-                font-size: large;
-            }
-            .g {
-                color: green;
-            }
-            .b {
-                color: purple;
-            }
-        </style>
-    </head>
-    <body>
-        <script>
-            let points = 0;
-            let timerID = 0;
-            function closehelp() {
-                document.querySelector('dialog').close();
-            }
-            function succeed() {
-                clearTimeout(timerID);
-                document.querySelector('.main_text').innerText = (Math.random() > 0.5) ? "PURPLE" : "GREEN"
-                document.querySelector('.main_text').style.color = (Math.random() > 0.5) ? "purple" : "green"
-                timerID = setTimeout(() => {
-                    fail();
-                }, 1000)
-            }
-            function fail() {
-                clearTimeout(timerID);
-                document.querySelector('.main_text').innerText = `YOU FAILED with ${points} points.`
-                document.querySelector('.main_text').style.color = "red"
-            }
-            document.onkeypress = function (e) {
-                e = e || window.event;
-                let color = document.querySelector('.main_text').innerText;
-                const dialog = document.querySelector('dialog');
-                // use e.keyCode
-                // 113=Q, green
-                // 112=P, purple
-                if (dialog.open == true) {
-                    dialog.close();
-                } else if (color == "READY") {
-                    succeed()
-                } else if ((e.keyCode == 113 && color == "GREEN") || (e.keyCode == 112 && color == "PURPLE")) {
-                    points++;
-                    succeed();
-                } else {
-                    fail();
-                }
-            };
-        </script>
-        <h1 class="main_text">READY</h1>
-        <p class="green">GREEN</p>
-        <p class="purple">PURPLE</p>
-        <dialog open>
-            <h2>HOW TO PLAY: </h2>
-            When you start the game, you will see a word. That word will be either GREEN or PURPLE, and will be coloured either green or purple. <wb/>The colours are only there to mislead you.
-            If the word is GREEN, not the colour green, then you will press the Q key on your keyboard. <br/>
-            If the word is PURPLE, not the colour purple, then you will press the P key on your keyboard. <br/><br/>
-            For example,
-            <ul>
-                <li>if you see <b class="g">GREEN</b>, you will hit Q, because the word is <i>"GREEN"</i></li>
-                <li>if you see <b class="p">PURPLE</b>, you will hit P, because the word is <i>"PURPLE"</i></li>
-                <li>if you see <b class="p">GREEN</b>, you will hit Q, because the word is <i>"GREEN"</i></li>
-                <li>if you see <b class="g">PURPLE</b>, you will hit P, because the word is <i>"PURPLE"</i></li>
-            </ul>
-            You will only have one second to hit the correct key.<br/>
-            To start the game, press any key to close this dialog, and then any key to start. <br/>
-            Good luck!<br/>
-        </dialog>
-    </body>
+<head>
+    <title>Board Games</title>
+    <link rel="stylesheet" href="jquery-ui.min.css" />
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('./assets/background.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .board {
+            width: min(90vw, 90vh);
+            aspect-ratio: 1 / 1;
+            background: url('./assets/board.jpg') no-repeat center/contain;
+        }
+
+        .piece {
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid black;
+            border-radius: 1rem;
+            position: fixed;  /* lock to page corner */
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .dice {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: fixed;  /* lock to page corner */
+            bottom: 1rem;
+            left: 1rem;
+            border: 2px solid black;
+        }
+        .dice2 {
+            left: 4rem !important;
+        }
+
+        .dtext {
+            text-align: center;
+        }
+        .card {
+            height: 10rem;
+            position: fixed;
+            top: 50%;                 /* center vertically */
+            right: 1rem;              /* stick to right side */
+            transform: translateY(-50%);
+            cursor: grab;             /* optional, nice visual cue */
+            z-index: 10;              /* ensure it’s above the board */
+        }
+    </style>
+</head>
+<body>
+    <div class="piece draggable" style="background-color: red;"></div>
+    <div class="piece draggable" style="background-color: orange;"></div>
+    <div class="piece draggable" style="background-color: yellow;"></div>
+    <div class="piece draggable" style="background-color: lime;"></div>
+    <div class="piece draggable" style="background-color: blue;"></div>
+    <img class="card draggable" src="./assets/cards/30.jpg" />
+    <img class="card draggable" src="./assets/cards/29.jpg" />
+    <img class="card draggable" src="./assets/cards/28.jpg" />
+    <img class="card draggable" src="./assets/cards/27.jpg" />
+    <img class="card draggable" src="./assets/cards/26.jpg" />
+    <img class="card draggable" src="./assets/cards/25.jpg" />
+    <img class="card draggable" src="./assets/cards/24.jpg" />
+    <img class="card draggable" src="./assets/cards/23.jpg" />
+    <img class="card draggable" src="./assets/cards/22.jpg" />
+    <img class="card draggable" src="./assets/cards/21.jpg" />
+    <img class="card draggable" src="./assets/cards/20.jpg" />
+    <img class="card draggable" src="./assets/cards/19.jpg" />
+    <img class="card draggable" src="./assets/cards/18.jpg" />
+    <img class="card draggable" src="./assets/cards/17.jpg" />
+    <img class="card draggable" src="./assets/cards/16.jpg" />
+    <img class="card draggable" src="./assets/cards/15.jpg" />
+    <img class="card draggable" src="./assets/cards/14.jpg" />
+    <img class="card draggable" src="./assets/cards/13.jpg" />
+    <img class="card draggable" src="./assets/cards/12.jpg" />
+    <img class="card draggable" src="./assets/cards/11.jpg" />
+    <img class="card draggable" src="./assets/cards/10.jpg" />
+    <img class="card draggable" src="./assets/cards/9.jpg" />
+    <img class="card draggable" src="./assets/cards/8.jpg" />
+    <img class="card draggable" src="./assets/cards/7.jpg" />
+    <img class="card draggable" src="./assets/cards/6.jpg" />
+    <img class="card draggable" src="./assets/cards/5.jpg" />
+    <img class="card draggable" src="./assets/cards/4.jpg" />
+    <img class="card draggable" src="./assets/cards/3.jpg" />
+    <img class="card draggable" src="./assets/cards/2.jpg" />
+    <img class="card draggable" src="./assets/cards/1.jpg" />
+
+    <div class="dice dice1" style="background-color: red;">
+        <b class="dtext dtext1">1</b>
+    </div>
+
+    <div class="dice dice2" style="background-color: green;">
+        <b class="dtext dtext2">1</b>
+    </div>
+    <div class="board"></div>
+
+    <input type="number" value="1500" style="background-color: red;" placeholder="Red Player"/>
+    <input type="number" value="1500" style="background-color: orange;" placeholder="Orange Player"/>
+    <input type="number" value="1500" style="background-color: yellow;" placeholder="Yellow Player"/>
+    <input type="number" value="1500" style="background-color: lime;" placeholder="Green Player"/>
+    <input type="number" value="1500" style="background-color: blue; color: white;" placeholder="Blue Player"/>
+
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script>
+        const DICE_SIDES = 6;
+        document.querySelector('.dice1').addEventListener('click', () => {
+            document.querySelector('.dtext1').innerText =
+                Math.floor(Math.random() * DICE_SIDES) + 1;
+        });
+        document.querySelector('.dice2').addEventListener('click', () => {
+            document.querySelector('.dtext2').innerText =
+                Math.floor(Math.random() * DICE_SIDES) + 1;
+        });
+        $('.draggable').draggable();
+    </script>
+</body>
 </html>
